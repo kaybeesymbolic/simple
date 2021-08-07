@@ -1,0 +1,37 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaybeesymbolic/simple.git"
+  },
+  "keywords": [
+    "api",
+    "population",
+    "region",
+    "country",
+    "state",
+    "add",
+    "post",
+    "query"
+  ],
+  "author": "kabir aremu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaybeesymbolic/simple/issues"
+  },
+  "homepage": "https://github.com/kaybeesymbolic/simple#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.1.2",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "mongoose": "^5.13.5",
+    "nodemon": "^2.0.12"
+  }
+}
