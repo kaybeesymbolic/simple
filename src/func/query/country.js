@@ -1,23 +1,20 @@
+const { ApolloError } = require("apollo-server-express")
+const {queryAll,queryOne} = require("./reuse/reuse")
 
-exports.getCountries =async (first,last,Country)=>{
-    const result =await Country.find({})  
-    if(first) return result.slice(0,first)
-    let count = result.length-last
-    if(last)return result.slice(count)
-    return result
-}
+//get all the countries
+exports.getCountries = queryAll
 
-exports.getCountry =async (id,Country)=>{
-    const result = await Country.findById(id)
-    if(result)return result 
-    return {}
-}
+//get specified country
+exports.getCountry = queryOne
 
-exports.addCountry = async(name,Country)=>{
-    const country = new Country({name:name})
-    if(await country.save())return country
-    return {}
-    
+//add on country
+exports.addCountry = async(name=null, model= {})=>{
+    try {
+        const country = await new model({name:name})
+    if(await country.save()) return country
+    } catch (error) {
+        throw new ApolloError("Error: operation failed")
+    }
 }
 
 exports.countCountryPeople = async(country,Person) =>{

@@ -1,17 +1,9 @@
+const {queryAll,queryOne} = require("./reuse/reuse")
 
-exports.getPersons =async (first,last,Person)=>{
-    const result =await Person.find({})  
-    if(first) return result.slice(0,first)
-    let count = result.length-last
-    if(last)return result.slice(count)
-    return result
-}
-
-exports.getPerson = async(id,Person)=>{
-    const result = await Person.findById(id)
-    if(result)return result 
-    return {}
-}
+//get all persons in a city or country
+exports.getPersons = queryAll
+//get one person with specify id, in a city or country
+exports.getPerson = queryOne
 
 exports.addPerson =async(areaId,first, middle,last,Person)=>{
     const person = await new Person({areaId:areaId,firstName:first,middleName:middle,lastName:last})
